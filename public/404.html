@@ -4,15 +4,18 @@
     <meta charset="utf-8" />
     <title>Engineers Spark</title>
     <script type="text/javascript">
-      // Redirect to hash-based routing for GitHub Pages
+      // Redirect to hash-based routing for GitHub Pages with base path
       var l = window.location;
+      var basePath = "/website/";
+      var currentPath = l.pathname.replace(basePath, "") || "/";
       l.replace(
         l.protocol +
           "//" +
           l.hostname +
           (l.port ? ":" + l.port : "") +
-          "/#" +
-          l.pathname,
+          basePath +
+          "#" +
+          currentPath,
       );
     </script>
   </head>
