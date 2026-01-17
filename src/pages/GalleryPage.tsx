@@ -56,7 +56,7 @@ export default function GalleryPage() {
 
         // Load all known images
         for (const filename of knownImages) {
-          const imagePath = `/gallery/${filename}`;
+          const imagePath = getAssetPath(`/gallery/${filename}`);
           const altText = filename.replace(".jpg", "").replace(/\d+$/, "");
           await tryLoadImage(imagePath, altText);
         }
@@ -67,7 +67,7 @@ export default function GalleryPage() {
         // Try image1.jpg to image10.jpg pattern
         for (let i = 1; i <= 10; i++) {
           for (const ext of imageExtensions) {
-            const imagePath = `/gallery/image${i}.${ext}`;
+            const imagePath = getAssetPath(`/gallery/image${i}.${ext}`);
             await tryLoadImage(imagePath, `Gallery image ${i}`);
           }
         }
@@ -78,7 +78,7 @@ export default function GalleryPage() {
         for (const name of commonNames) {
           for (let i = 1; i <= 5; i++) {
             for (const ext of imageExtensions) {
-              const imagePath = `/gallery/${name}${i}.${ext}`;
+              const imagePath = getAssetPath(`/gallery/${name}${i}.${ext}`);
               await tryLoadImage(imagePath, `${name} ${i}`);
             }
           }

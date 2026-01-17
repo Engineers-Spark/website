@@ -26,7 +26,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link to="/" className="flex items-center space-x-2">
           <img
-            src="/favicon.png"
+            src={getAssetPath("/favicon.png")}
             alt="Engineer's Spark"
             width={40}
             height={40}

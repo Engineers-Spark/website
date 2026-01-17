@@ -74,7 +74,7 @@ export default function HomePage() {
 
   const prevSlide = () => {
     setCurrentSlide(
-      (prev) => (prev - 1 + highlightImages.length) % highlightImages.length
+      (prev) => (prev - 1 + highlightImages.length) % highlightImages.length,
     );
   };
 
@@ -85,7 +85,7 @@ export default function HomePage() {
         {/* Background Image with Reduced Opacity */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/bg.png"
+            src={getAssetPath("/bg.png")}
             alt="Engineer's Spark Community"
             className="w-full h-full object-cover opacity-20"
           />
@@ -95,7 +95,7 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto text-center relative z-10">
           <div className="mb-8">
             <img
-              src="/logo.png"
+              src={getAssetPath("/logo.png")}
               alt="Engineer's Spark Logo"
               width={300}
               height={300}
@@ -138,7 +138,7 @@ export default function HomePage() {
             <div className="relative z-10">
               <div className="relative">
                 <img
-                  src="/logo.png"
+                  src={getAssetPath("/logo.png")}
                   alt="Engineer's Spark Logo"
                   width={220}
                   height={220}
@@ -298,7 +298,7 @@ export default function HomePage() {
             <div className="text-center">
               <div className="relative mb-6">
                 <img
-                  src="/logo.png"
+                  src={getAssetPath("/logo.png")}
                   alt="Engineers Spark Community Logo"
                   width={150}
                   height={150}
@@ -330,7 +330,7 @@ export default function HomePage() {
                   >
                     <div className="relative mb-6">
                       <img
-                        src="/isetcom.png"
+                        src={getAssetPath("/isetcom.png")}
                         alt="Engineers Spark ISETCOM Logo"
                         width={100}
                         height={100}
@@ -364,7 +364,7 @@ export default function HomePage() {
                   >
                     <div className="relative mb-6">
                       <img
-                        src="/uik.png"
+                        src={getAssetPath("/uik.png")}
                         alt="Engineers Spark UIK Logo"
                         width={100}
                         height={100}

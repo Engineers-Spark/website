@@ -1,3 +1,4 @@
+import { getAssetPath } from "@/utils/paths";
 import { Facebook, Github, Instagram, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -10,7 +11,7 @@ export default function Footer() {
           <div className="md:col-span-2">
             <div className="flex items-center gap-3 mb-4">
               <img
-                src="/favicon.png"
+                src={getAssetPath("/favicon.png")}
                 alt="Engineer's Spark"
                 width={40}
                 height={40}
