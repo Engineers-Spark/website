@@ -28,7 +28,7 @@ yarn-error.log*
 next-env.d.ts
 
 # Built files (deployed via GitHub Actions)
-# Uncomment these lines if you want to use GitHub Actions only
-# /index.html
-# /404.html
-# /assets
+# Keep source index.html but ignore built versions
+/404.html
+/assets
+/dist
