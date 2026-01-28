@@ -25,13 +25,13 @@ jobs:
           # Remove built files that might interfere with the build
           rm -f index.html 404.html
           rm -rf assets dist
-          # Restore original index.html
+          # Restore original index.html with correct favicon path for GitHub Pages
           cat > index.html << 'EOF'
           <!DOCTYPE html>
           <html lang="en">
             <head>
               <meta charset="UTF-8" />
-              <link rel="icon" type="image/png" href="/favicon.png" />
+              <link rel="icon" type="image/png" href="/website/favicon.png" />
               <meta name="viewport" content="width=device-width, initial-scale=1.0" />
               <meta name="description" content="Engineer's Spark is a Tunisian cybersecurity club focused on CTF competitions, security research, and building the next generation of cybersecurity professionals." />
               <title>Engineer's Spark - Cybersecurity Club</title>
