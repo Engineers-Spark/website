@@ -6,6 +6,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { getAssetPath } from "@/utils/paths";
 import { ChevronDown, Menu } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";

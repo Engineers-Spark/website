@@ -6,6 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { getAssetPath } from "@/utils/paths";
 import {
   Calendar,
   ChevronLeft,

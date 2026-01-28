@@ -1,3 +1,4 @@
+import { getAssetPath } from "@/utils/paths";
 import { ImageIcon, X, ZoomIn } from "lucide-react";
 import { useEffect, useState } from "react";
 
