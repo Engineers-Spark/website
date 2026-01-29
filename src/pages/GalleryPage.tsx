@@ -17,72 +17,41 @@ export default function GalleryPage() {
     // Function to load images from gallery directory
     const loadGalleryImages = async () => {
       try {
-        const images: GalleryImage[] = [];
-
-        // Helper function to check if image actually loads
-        const tryLoadImage = async (
-          imagePath: string,
-          alt: string,
-        ): Promise<boolean> => {
-          return new Promise((resolve) => {
-            const img = new Image();
-            img.onload = () => {
-              images.push({
-                id: images.length + 1,
-                src: imagePath,
-                alt: alt,
-              });
-              resolve(true);
-            };
-            img.onerror = () => resolve(false);
-            // Set a timeout to avoid hanging
-            setTimeout(() => resolve(false), 3000);
-            img.src = imagePath;
-          });
-        };
-
-        // Check for the specific files that exist in the directory
+        // Known images that exist in the gallery directory
         const knownImages = [
-          "auto1.jpg",
-          "cybermazev51.jpg",
-          "cybermazev52.jpg",
-          "cybermazev53.jpg",
-          "IntrotoCyber1.jpg",
-          "introtocyber2.jpg",
-          "linuxfunds1.jpg",
-          "linuxfunds2.jpg",
-          "pwn1.jpg",
-          "trafficana1.jpg",
+          { filename: "auto1.jpg", alt: "Automotive Security Workshop" },
+          { filename: "cybermazev51.jpg", alt: "CyberMaze Competition v5.1" },
+          { filename: "cybermazev52.jpg", alt: "CyberMaze Competition v5.2" },
+          { filename: "cybermazev53.jpg", alt: "CyberMaze Competition v5.3" },
+          {
+            filename: "IntrotoCyber1.jpg",
+            alt: "Introduction to Cybersecurity",
+          },
+          {
+            filename: "introtocyber2.jpg",
+            alt: "Introduction to Cybersecurity Part 2",
+          },
+          { filename: "linuxfunds1.jpg", alt: "Linux Fundamentals Workshop" },
+          {
+            filename: "linuxfunds2.jpg",
+            alt: "Linux Fundamentals Workshop Part 2",
+          },
+          { filename: "pwn1.jpg", alt: "PWN Workshop" },
+          { filename: "trafficana1.jpg", alt: "Traffic Analysis Workshop" },
         ];
 
-        // Load all known images
-        for (const filename of knownImages) {
-          const imagePath = getAssetPath(`/gallery/${filename}`);
-          const altText = filename.replace(".jpg", "").replace(/\d+$/, "");
-          await tryLoadImage(imagePath, altText);
-        }
+        const images: GalleryImage[] = [];
 
-        // Try common naming patterns with reasonable limits
-        const imageExtensions = ["jpg", "jpeg", "png", "gif", "webp"];
+        // Load only known images to avoid unnecessary HTTP requests
+        for (let i = 0; i < knownImages.length; i++) {
+          const { filename, alt } = knownImages[i];
+          const imagePath = getAssetPath(`gallery/${filename}`);
 
-        // Try image1.jpg to image10.jpg pattern
-        for (let i = 1; i <= 10; i++) {
-          for (const ext of imageExtensions) {
-            const imagePath = getAssetPath(`/gallery/image${i}.${ext}`);
-            await tryLoadImage(imagePath, `Gallery image ${i}`);
-          }
-        }
-
-        // Try common naming patterns (limited to avoid too many requests)
-        const commonNames = ["photo", "img", "team", "event"];
-
-        for (const name of commonNames) {
-          for (let i = 1; i <= 5; i++) {
-            for (const ext of imageExtensions) {
-              const imagePath = getAssetPath(`/gallery/${name}${i}.${ext}`);
-              await tryLoadImage(imagePath, `${name} ${i}`);
-            }
-          }
+          images.push({
+            id: i + 1,
+            src: imagePath,
+            alt: alt,
+          });
         }
 
         setGalleryImages(images);

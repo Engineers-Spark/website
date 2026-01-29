@@ -1,9 +1,8 @@
 // Utility function to get the correct asset path based on environment
 export const getAssetPath = (path: string): string => {
-  // Check if we're in development or production
-  const isDev = import.meta.env.DEV;
+  // Remove leading slash if present
   const cleanPath = path.startsWith("/") ? path.slice(1) : path;
 
-  // In development, use root paths. In production, use /website/ prefix
-  return isDev ? `/${cleanPath}` : `/website/${cleanPath}`;
+  // Always use the base path for consistency between dev and prod
+  return `/website/${cleanPath}`;
 };

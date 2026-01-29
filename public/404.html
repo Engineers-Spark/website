@@ -2,20 +2,35 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Engineers Spark</title>
+    <title>ISET Cybersecurity Club</title>
     <script type="text/javascript">
-      // Redirect to hash-based routing for GitHub Pages with base path
+      // Single Page Apps for GitHub Pages
+      // This script takes the current url and converts the path and query
+      // string into just a query string, and then redirects the browser
+      // to the new url with only a query string and hash fragment
+
+      // For GitHub Pages with base path /website/
+      var pathSegmentsToKeep = 1;
+
       var l = window.location;
-      var basePath = "/website/";
-      var currentPath = l.pathname.replace(basePath, "") || "/";
       l.replace(
         l.protocol +
           "//" +
           l.hostname +
           (l.port ? ":" + l.port : "") +
-          basePath +
-          "#" +
-          currentPath,
+          l.pathname
+            .split("/")
+            .slice(0, 1 + pathSegmentsToKeep)
+            .join("/") +
+          "/?/" +
+          l.pathname
+            .slice(1)
+            .split("/")
+            .slice(pathSegmentsToKeep)
+            .join("/")
+            .replace(/&/g, "~and~") +
+          (l.search ? "&" + l.search.slice(1).replace(/&/g, "~and~") : "") +
+          l.hash,
       );
     </script>
   </head>
